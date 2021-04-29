@@ -16,12 +16,24 @@ variable "subscription_id" {
 variable "tenant_id" {
   type = string
 }
+variable "storage_key"{
+    type = string
+}
 provider "azurerm" {
 	 client_id = var.client_id
 	 client_secret = var.client_secret
 	 subscription_id = var.subscription_id
 	 tenant_id = var.tenant_id
 	 features {}
+}
+terraform {
+  backend "azurerm" {
+    resource_group_name  = "32943"
+    storage_account_name = "cloudlegonewstorage"
+    container_name       = "tfstate"
+    key                  = "dev.terraform.tfstate"
+    access_key = var.storage_key
+  }
 }
 resource "azurerm_virtual_network" "example" {
   name                = "virtualNetwork1"
