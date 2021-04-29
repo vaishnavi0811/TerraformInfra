@@ -30,11 +30,10 @@ jobs:
           export ARM_CLIENT_ID=${{ secrets.CLIENT_ID }}
           export ARM_CLIENT_SECRET=${{ secrets.CLIENT_SECRET }}
           export ARM_TENANT_ID=${{ secrets.TENANT_ID }}
-      
+          export ARM_SUBSCRIPTION_ID=${{ secrets.SUBSCRIPTION }}
       - name: Run terraform init
         id: init
         run: |
-          az login
           terraform init
         working-directory: vnet
 
