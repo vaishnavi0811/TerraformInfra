@@ -31,7 +31,9 @@ jobs:
       
       - name: Run terraform init
         id: init
-        run: terraform init
+        run: |
+          az login
+          terraform init
         working-directory: vnet
 
       - name: Run terraform plan
