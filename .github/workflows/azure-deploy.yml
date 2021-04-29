@@ -21,7 +21,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: hashicorp/setup-terraform@v1.2.1
       - name: set env variable
-        run: export ARM_ACCESS_KEY = ${{ secrets.STORAGE_ACCESS_KEY }}
+        run: export ARM_ACCESS_KEY=${{ secrets.STORAGE_ACCESS_KEY }}
       
       - name: Run terraform init
         id: init
