@@ -1,4 +1,4 @@
-name: Azure App Service - contentfulappjs(Production), Build and deploy NodeJS app
+name: Build Azure Virtual Network
 
 on:
   workflow_dispatch:
@@ -27,5 +27,5 @@ jobs:
 
       - name: Run terraform apply
         id: apply
-        run: terraform plan -var="rgName=${{ github.event.inputs.rgName }}" -var="location=${{ github.event.inputs.location }}"
+        run: terraform plan -var="rgName=${{ github.event.inputs.rgName }}" -var="location=${{ github.event.inputs.location }}" -var=""
         working-directory: Terraform/vnet
