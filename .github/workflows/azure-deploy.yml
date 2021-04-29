@@ -19,7 +19,7 @@ jobs:
 
     steps:  
       - uses: hashicorp/setup-terraform@v1.2.1
-
+      - run: ls
       - name: Run terraform init
         id: init
         run: terraform init
