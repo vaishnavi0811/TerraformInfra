@@ -20,6 +20,8 @@ jobs:
     steps:  
       - uses: actions/checkout@v2
       - uses: hashicorp/setup-terraform@v1.2.1
+      - name: login to Azure
+        run: az login --service-principal --username ${{ secrets.CLIENT_ID }} --password ${{ secrets.CLIENT_SECRET }} --tenant ${{ secrets.TENANT_ID }}
       - name: set env variable
         run: export ARM_ACCESS_KEY=${{ secrets.STORAGE_ACCESS_KEY }}
       
