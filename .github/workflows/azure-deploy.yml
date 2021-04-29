@@ -20,6 +20,8 @@ jobs:
     steps:  
       - uses: actions/checkout@v2
       - uses: hashicorp/setup-terraform@v1.2.1
+      - name: set env variable
+        run: export ARM_ACCESS_KEY = ${{ secrets.STORAGE_ACCESS_KEY }}
       
       - name: Run terraform init
         id: init
@@ -28,10 +30,10 @@ jobs:
 
       - name: Run terraform plan
         id: plan
-        run: terraform plan -var="rgName=${{ github.event.inputs.rgName }}" -var="location=${{ github.event.inputs.location }}" -var="client_id=${{ secrets.CLIENT_ID }}" -var="client_secret=${{ secrets.CLIENT_SECRET }}" -var="tenant_id=${{ secrets.TENANT_ID }}" -var="subscription_id=${{ secrets.SUBSCRIPTION }} -var="storage_key=${{ secrets.STORAGE_ACCESS_KEY }}"
+        run: terraform plan -var="rgName=${{ github.event.inputs.rgName }}" -var="location=${{ github.event.inputs.location }}" -var="client_id=${{ secrets.CLIENT_ID }}" -var="client_secret=${{ secrets.CLIENT_SECRET }}" -var="tenant_id=${{ secrets.TENANT_ID }}" -var="subscription_id=${{ secrets.SUBSCRIPTION }} 
         working-directory: vnet
       
       - name: Run terraform apply
         id: apply
-        run: terraform apply -var="rgName=${{ github.event.inputs.rgName }}" -var="location=${{ github.event.inputs.location }}" -var="client_id=${{ secrets.CLIENT_ID }}" -var="client_secret=${{ secrets.CLIENT_SECRET }}" -var="tenant_id=${{ secrets.TENANT_ID }}" -var="subscription_id=${{ secrets.SUBSCRIPTION }}" -var="storage_key=${{ secrets.STORAGE_ACCESS_KEY }}"
+        run: terraform apply -var="rgName=${{ github.event.inputs.rgName }}" -var="location=${{ github.event.inputs.location }}" -var="client_id=${{ secrets.CLIENT_ID }}" -var="client_secret=${{ secrets.CLIENT_SECRET }}" -var="tenant_id=${{ secrets.TENANT_ID }}" -var="subscription_id=${{ secrets.SUBSCRIPTION }}"
         working-directory: vnet
