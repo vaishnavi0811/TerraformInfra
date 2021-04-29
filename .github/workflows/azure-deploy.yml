@@ -23,9 +23,9 @@ jobs:
       - name: Run terraform init
         id: init
         run: terraform init
-        working-directory: Terraform/vnet
+        working-directory: vnet
 
       - name: Run terraform apply
         id: apply
         run: terraform plan -var="rgName=${{ github.event.inputs.rgName }}" -var="location=${{ github.event.inputs.location }}" -var="client_id=${{ secrets.CLIENT_ID }}" -var="client_secret=${{ secrets.CLIENT_SECRET }}" -var="tenant_id=${{ secrets.TENANT_ID }}" -var="subscription_id={{ secrets.subscription }}"
-        working-directory: Terraform/vnet
+        working-directory: vnet
