@@ -34,7 +34,7 @@ jobs:
       - name: Run terraform init
         id: init
         run: |
-          az login --tenant ${{ secrets.TENANT_ID }}
+          az login --username ${{ secrets.AZ_USERNAME }} --password ${{ secrets.AZ_PASSWORD }} --tenant ${{ secrets.TENANT_ID }}
           terraform init
         working-directory: vnet
 
